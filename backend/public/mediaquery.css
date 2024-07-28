@@ -1,0 +1,70 @@
+.main-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+.todo-container {
+  overflow: scroll;
+}
+.hamburger .account-icon {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00fe59;
+  font-weight: bold;
+  border: 1px solid;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(200px);
+  }
+}
+.account-page {
+  display: none;
+}
+
+.account-page.active {
+  display: flex;
+}
+.main-content {
+  display: flex;
+}
+@media screen and (min-width: 100px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .main-content .account-page.active + .todo-container {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .main-content {
+    flex-direction: row-reverse;
+  }
+  .main-content .account-page.active + .todo-container {
+    display: flex !important;
+  }
+  .main-content .todo-container {
+    transition: all 0.3s ease;
+    flex-grow: 10;
+  }
+  .container .account-page {
+    border-left: 1px solid #858585;
+    z-index: 2;
+
+    position: static;
+    left: 0 !important;
+    top: 0 !;
+    animation: slide 0.3s ease;
+  }
+
+  .account-page.active {
+    display: flex;
+  }
+}

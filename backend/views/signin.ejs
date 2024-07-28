@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", "sanserif";
+    }
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    form {
+      text-align: center;
+      padding: 10px;
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    input {
+      height: 50px;
+      padding-left: 40px;
+      font-size: 18px;
+      background-color: #ffff;
+      border-radius: 5px;
+      border: 1px solid #838383;
+    }
+    .signup {
+      border-radius: 5px;
+      width: 100%;
+      height: 50px;
+      border: none;
+      background-color: coral;
+      font-weight: 600;
+      font-size: inherit;
+      color: #ffff;
+    }
+    label {
+      transition: all 0.3s ease;
+      position: absolute;
+      top: 13px;
+      left: 40px;
+      display: inline-block;
+    }
+    input:focus ~ label,
+    input:valid ~ label {
+      transform: translateY(-38px);
+
+      font-size: 14px;
+      left: 15px;
+    }
+    input:focus {
+      outline: none;
+    }
+    i {
+      position: absolute;
+      bottom: 18px;
+      z-index: 1;
+      padding-left: 15px;
+    }
+    section {
+      background-color: rgb(104, 242, 34);
+      padding: 10px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      animation: popup 1s ease;
+      transform-origin: center;
+      width: 350px;
+      overflow: hidden;
+      text-wrap: nowrap;
+      position: absolute;
+      top: 30px;
+      color: #000000;
+    }
+    @keyframes popup {
+      from {
+        transform: translateY(-100px);
+      }
+    }
+    .success-tostal {
+      background-color: rgba(0, 254, 89, 0.47);
+      width: 300px;
+      height: 60px;
+      padding: 5px 10px 5px 20px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 15px;
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .tick-icon {
+      width: 30px;
+      height: 30px;
+      background-color: rgb(3, 172, 31);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .tick-icon .bar-1 {
+      width: 3px;
+      height: 10px;
+      transform: rotate(-40deg) translate(-5px);
+      background-color: #ffffff;
+    }
+    .tick-icon .bar-2 {
+      width: 3px;
+      height: 18px;
+      transform: rotate(45deg) translate(1px) translateY(0px);
+      background-color: #ffffff;
+    }
+    .message-box {
+      flex-grow: 1;
+    }
+
+    .message-box .message {
+      width: 100%;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .message-box .text {
+      width: 100%;
+      font-size: 14px;
+    }
+    .success-line {
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      bottom: 0;
+      left: 0;
+      background-color: rgb(34, 177, 21);
+      transition: all 0.3s ease;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <% if(locals.msg){ %>
+      <div class="success-tostal">
+        <div class="message-box">
+          <p class="message">Dear user</p>
+          <p class="text"><%=msg%></p>
+        </div>
+        <div class="success-line"></div>
+      </div>
+      <%}%>
+      <form method="post" action="/home" autocomplete="off">
+        <h1>Sign In</h1>
+        <div class="form-group">
+          <i class="fa-solid fa-user"></i>
+          <input name="email" id="name" required type="text" />
+          <label for="name">Enter your email</label>
+        </div>
+        <div class="form-group">
+          <i class="fa-solid fa-lock"></i>
+          <input name="password" id="password" required type="text" />
+          <label for="password">Enter your Password</label>
+        </div>
+        <button class="signup" type="submit">Sign In</button>
+        <div class="form-group">
+          <p>Don't Have an account ? <a href="/signup"> sinup now</a></p>
+        </div>
+      </form>
+    </div>
+    <script>
+      let successWidth = 100;
+      document.querySelector(".success-tostal").style.display = "flex";
+      const successIntervalId = setInterval(() => {
+        document.querySelector(".success-line").style.width =
+          successWidth - 1 + "%";
+        if (successWidth <= -10) {
+          document.querySelector(".success-tostal").style.display = "none";
+          clearInterval(successIntervalId);
+          successWidth = 0;
+        }
+        successWidth--;
+      }, 50);
+    </script>
+  </body>
+</html>

@@ -97,7 +97,7 @@
               todos.todayTask.forEach(todo => { %>
               <li class="task <%=todo.completed%>" data-todo-Id="<%=todo._id%>">
                 <section>
-                  <input <%="todo.completed%" /> type="checkbox" />
+                  <input <%=todo.completed%> type="checkbox" />
                   <p class="todo-title"><%= todo.title %></p>
                 </section>
 
@@ -125,7 +125,7 @@
               todos.yesterdayTask.forEach(todo => { %>
               <li class="task <%=todo.completed%>" data-todo-Id="<%=todo._id%>">
                 <section>
-                  <input <%="todo.completed%" /> type="checkbox" />
+                  <input <%=todo.completed%> type="checkbox" />
                   <p class="todo-title"><%= todo.title %></p>
                 </section>
 
@@ -153,7 +153,7 @@
               todos.dayBeforeYesterday.forEach(todo => { %>
               <li class="task <%=todo.completed%>" data-todo-Id="<%=todo._id%>">
                 <section>
-                  <input <%="todo.completed%" /> type="checkbox" />
+                  <input <%=todo.completed%> type="checkbox" />
                   <p class="todo-title"><%= todo.title %></p>
                 </section>
 
@@ -181,7 +181,7 @@
               { %>
               <li class="task <%=todo.completed%>" data-todo-Id="<%=todo._id%>">
                 <section>
-                  <input <%="todo.completed%" /> type="checkbox" />
+                  <input <%=todo.completed%> type="checkbox" />
                   <p class="todo-title"><%= todo.title %></p>
                 </section>
 

@@ -223,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Create Functionality---------------------------------------
   async function createPost(userId, data) {
+closeInputBox();
     let todo = {
       title: data,
       ref: userId,
@@ -255,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector(".day-1+ul").innerHTML += template;
     document.querySelector(".input-box input").value = "";
-    closeInputBox();
+    
     reloadFunctionality();
 
     if (status === 201) {

@@ -15,6 +15,16 @@ label();
   //Global variable
   let clickedTask = "";
 
+//Theme functionality ----------------------------------------------
+  const theme = JSON.parse(localStorage.getItem("theme"));
+  if (theme == "dark") {
+    document.querySelector(".container").classList.add("dark");
+    document.querySelector(".switch-theme").classList.add("active");
+  } else {
+    document.querySelector(".container").classList.remove("dark");
+  }
+
+//hide label functionality ---------
   function label() {
     let dayOne = document.querySelector(".day-1");
     let dayTwo = document.querySelector(".day-2");
@@ -121,14 +131,7 @@ label();
     closeEditBox(editDiscard);
   });
 
-  //Theme functionality ----------------------------------------------
-  const theme = JSON.parse(localStorage.getItem("theme"));
-  if (theme == "dark") {
-    document.querySelector(".container").classList.add("dark");
-    document.querySelector(".switch-theme").classList.add("active");
-  } else {
-    document.querySelector(".container").classList.remove("dark");
-  }
+  
 
   mode.addEventListener("click", () => {
     let theme = document.querySelector(".container").classList.toggle("dark");

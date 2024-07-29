@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+label();
   const addTodo = document.querySelector(".add");
   const saveBtn = document.querySelector(".save");
   const editBtn = document.querySelectorAll(".edit-task");
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector('.empty').style.display = 'none'
     }
   }
-  label();
+  
   function isStared(unstar) {
     let stared = "";
     if (unstar.classList.contains("fa-regular")) {

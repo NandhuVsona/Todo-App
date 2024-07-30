@@ -228,16 +228,7 @@ label();
   //Create Functionality---------------------------------------
   async function createPost(userId, data) {
 closeInputBox();
-    let todo = {
-      title: data,
-      ref: userId,
-    };
-    let req = await fetch(`/api/v1/todo/${userId}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(todo),
-    });
-    let { savedTodo, status } = await req.json();
+    
     let dayOne = document.querySelector(".day-1");
     if (!dayOne.nextElementSibling.children.length > 0) {
       dayOne.parentElement.style.display = "block";
@@ -262,6 +253,16 @@ closeInputBox();
     document.querySelector(".input-box input").value = "";
     
     reloadFunctionality();
+let todo = {
+      title: data,
+      ref: userId,
+    };
+    let req = await fetch(`/api/v1/todo/${userId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(todo),
+    });
+    let { savedTodo, status } = await req.json();
 
     if (status === 201) {
       document.querySelector(".success-tostal").classList.add("active");

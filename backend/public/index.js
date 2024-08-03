@@ -362,7 +362,7 @@ async function logout() {
     headers: { "Content-Type": "application/json" },
   });
   window.location.reload();
-  window.location.href = "/";
+  window.location.href = "/signin";
 }
 async function deleteUser(userId) {
   await fetch("/", {
@@ -371,7 +371,7 @@ async function deleteUser(userId) {
     body: JSON.stringify({ userId }),
   });
   window.location.reload();
-  window.location.href = "/";
+  window.location.href = "/signup";
 }
 
 async function taskDetails(id) {

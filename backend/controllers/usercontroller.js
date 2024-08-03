@@ -19,19 +19,19 @@ const prodectedRoute = async (req, res, next) => {
       if (user) {
         next();
       } else {
-        res
-          .status(401)
-          .render("signin.ejs");
+        res.status(401).render("signin.ejs");
       }
     } else {
-      return res
-        .status(401)
-        .render("signin.ejs");
+      return res.status(401).render("signin.ejs");
     }
   } catch (msg) {
-    res.status(400).json({
-      error: "There is some error occured",
-      msg,
+    res.status(201).render("signin.ejs", {
+      tostal: {
+        msg: "Token is expried login to continue..",
+        title: "JWT Error.!",
+        bg: "rgba(255, 166, 0, 0.654)",
+        color: "orange",
+      },
     });
   }
 };
@@ -44,14 +44,23 @@ const createUser = async (req, res) => {
       password: req.body.password,
     });
     await newUser.save();
+
     res.status(201).render("signin.ejs", {
-      status: true,
-      msg: "Successfully registered login to continue..",
+      tostal: {
+        msg: "Account created login to continue..",
+        title: "Success",
+        bg: "rgba(0, 254, 89, 0.47)",
+        color: "rgb(34, 177, 21)",
+      },
     });
   } catch (err) {
-    res.status(201).render("signin.ejs", {
-      msg: err.message,
-      status: false,
+    res.status(400).render("signin.ejs", {
+      tostal: {
+        msg: err.message,
+        title: "Failed",
+        bg: " rgba(255, 0, 0, 0.336)",
+        color: "red",
+      },
     });
   }
 };
@@ -158,7 +167,6 @@ const deleteUser = async (req, res) => {
       });
     }
   } catch (err) {
-    
     res.status(400).json({
       message: "Failed to delete.",
       error: err,

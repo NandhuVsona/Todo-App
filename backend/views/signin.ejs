@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -122,6 +122,8 @@
       transform: translate(-50%, -50%);
       border-radius: 10px;
       overflow: hidden;
+      border-left: 5px solid green;
+    
     }
 
     .tick-icon {
@@ -171,13 +173,13 @@
   </style>
   <body>
     <div class="container">
-      <% if(locals.msg){ %>
-      <div class="success-tostal">
+      <% if(locals.tostal){ %>
+      <div class="success-tostal" style="background-color:<%=tostal.bg%>; border-left:5px solid <%=tostal.color%>">
         <div class="message-box">
-          <p class="message">Dear user</p>
-          <p class="text"><%=msg%></p>
+          <p class="message"><%=tostal.title%></p>
+          <p class="text"><%=tostal.msg%></p>
         </div>
-        <div class="success-line"></div>
+        <div class="success-line" style="background-color:<%=tostal.color%>"></div>
       </div>
       <%}%>
       <form method="post" action="/home" autocomplete="off">

@@ -14,7 +14,7 @@ const {
 } = require("../controllers/usercontroller");
 
 router.route("/").get(prodectedRoute,homepage).post(createUser).delete(prodectedRoute,deleteUser)
-router.route("/home").post(login)
+router.route("/home").post(login).get(prodectedRoute,homepage)
 router.route("/signup").get(signup)
 router.route("/signin").get(signin)
 router.route("/logout").post(prodectedRoute,logout)

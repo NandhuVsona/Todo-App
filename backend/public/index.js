@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+label();
   const addTodo = document.querySelector(".add");
   const saveBtn = document.querySelector(".save");
   const editBtn = document.querySelectorAll(".edit-task");
@@ -14,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   //Global variable
   let clickedTask = "";
 
+
+//hide label functionality ---------
   function label() {
     let dayOne = document.querySelector(".day-1");
     let dayTwo = document.querySelector(".day-2");
@@ -51,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector('.empty').style.display = 'none'
     }
   }
-  label();
+  
   function isStared(unstar) {
     let stared = "";
     if (unstar.classList.contains("fa-regular")) {
@@ -128,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     document.querySelector(".container").classList.remove("dark");
   }
+
 
   mode.addEventListener("click", () => {
     let theme = document.querySelector(".container").classList.toggle("dark");
@@ -223,7 +227,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Create Functionality---------------------------------------
   async function createPost(userId, data) {
-    let todo = {
+closeInputBox();
+let todo = {
       title: data,
       ref: userId,
     };
@@ -233,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
       body: JSON.stringify(todo),
     });
     let { savedTodo, status } = await req.json();
+    
     let dayOne = document.querySelector(".day-1");
     if (!dayOne.nextElementSibling.children.length > 0) {
       dayOne.parentElement.style.display = "block";
@@ -255,8 +261,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector(".day-1+ul").innerHTML += template;
     document.querySelector(".input-box input").value = "";
-    closeInputBox();
+    
     reloadFunctionality();
+
 
     if (status === 201) {
       document.querySelector(".success-tostal").classList.add("active");

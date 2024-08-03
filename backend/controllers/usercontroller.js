@@ -100,7 +100,7 @@ const login = async (req, res) => {
   if (!user) {
     return res
       .status(400)
-      .render("signin.ejs", { tostal:{msg: "Incorrect email or password",color:"red", title: "Failed",
+      .render("signin.ejs", { tostal:{msg: "Incorrect email or password",color:"red", title: "404 Not found",
         bg: " rgba(255, 0, 0, 0.336)",} });
   }
   const token = jwt.sign({ id: user._id }, process.env.SECRECT_KEY, {

@@ -4,7 +4,7 @@ label();
   const saveBtn = document.querySelector(".save");
   const editBtn = document.querySelectorAll(".edit-task");
   const checkbox = document.querySelectorAll(".task section input");
-  const unstar = document.querySelectorAll(".unstar");
+  const star = document.querySelectorAll(".fa-star");
   const deleteBtn = document.querySelectorAll(".delete");
   const editDiscard = document.querySelector(".edit-discard");
   const saveDiscard = document.querySelector(".discard");
@@ -61,10 +61,12 @@ label();
       stared = "fa-solid";
       unstar.classList.remove("fa-regular");
       unstar.classList.add("fa-solid");
+      console.log('if is executed')
     } else {
       stared = "fa-regular";
       unstar.classList.add("fa-regular");
       unstar.classList.remove("fa-solid");
+      console.log('else is executed')
     }
     let data =
       unstar.parentElement.previousElementSibling.children[1].textContent;
@@ -147,9 +149,9 @@ label();
   function reloadFunctionality() {
     const editBtn = document.querySelectorAll(".edit-task");
     const checkbox = document.querySelectorAll(".task section input");
-    const unstar = document.querySelectorAll(".unstar");
+    const star = document.querySelectorAll(".fa-star");
     const deleteBtn = document.querySelectorAll(".delete");
-    unstar.forEach((unstar) => {
+    star.forEach((unstar) => {
       unstar.addEventListener("click", () => isStared(unstar));
     });
 
@@ -181,7 +183,7 @@ label();
       btn.parentElement.remove();
     });
   });
-  unstar.forEach((unstar) => {
+  star.forEach((unstar) => {
     unstar.addEventListener("click", () => isStared(unstar));
   });
 
@@ -251,7 +253,7 @@ let todo = {
        </section>
        <div class="todo-operations">
          <i class="fa-solid fa-pen-to-square edit-task"></i>
-         <i class="fa-regular fa-star unstar"></i>
+         <i class="fa-regular fa-star"></i>
        </div>
        <div data-user-Id=${userId} class="delete"  data-todo-Id=${savedTodo._id}>
          <i class="fa-regular fa-trash-can"></i>
@@ -314,24 +316,6 @@ let todo = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTodo),
     });
-    let res = await req.json();
-    if (res.message === "Successfully Updated.") {
-      clickedTask.innerHTML = title;
-      document.querySelector(".success-tostal").classList.add("active");
-      let successWidth = 100;
-      const successIntervalId = setInterval(() => {
-        document.querySelector(".success-line").style.width =
-          successWidth - 1 + "%";
-        if (successWidth <= -10) {
-          document.querySelector(".success-tostal").classList.remove("active");
-          clearInterval(successIntervalId);
-          successWidth = 0;
-          document.querySelector(".success-line").style.width = "100%";
-        }
-        successWidth--;
-      }, 20);
-      taskDetails(document.querySelector(".hamburger").dataset.userId);
-    }
   }
 });
 

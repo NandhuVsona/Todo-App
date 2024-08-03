@@ -1,6 +1,6 @@
 :root {
-  --bg: rgb(0, 251, 159);
-  --text-color: #000000;
+  --bg: rgb(255, 123, 0);
+  --text-color: #ffffff;
   /* --toggle-color: orange; */
   --toggle-color:rgb(0, 251, 159)
 }
@@ -33,6 +33,7 @@ body {
 .container.dark header .options .mode .fa-cloud-sun {
   display: none;
 }
+
 .container.dark header .options .mode .fa-cloud-moon {
   display: flex;
 }
@@ -47,7 +48,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding:2px 15px 2px 10px;
   color: var(--text-color);
 }
@@ -254,8 +254,8 @@ input[type="checkbox"]:checked + p {
 .edit-box-header h3 {
   background: linear-gradient(
     to bottom left,
-    rgb(0, 255, 136),
-    rgb(173, 173, 173)
+    rgb(255, 132, 0),
+    rgb(205, 205, 205)
   );
   padding: 2px 10px;
   border-radius: 5px;
@@ -467,7 +467,7 @@ input[type="checkbox"]:checked + p {
   font-weight: 600;
   font-size: 17px;
   border-radius: 5px;
-  background-color: rgb(255, 183, 0);
+  background-color: var(--bg);
   transform-origin: center;
   transition: all 0.5s ease;
   animation: open 0.5s ease;
@@ -551,8 +551,8 @@ ul {
   display: none;
 }
 .empty img {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 .img-container {
   display: flex;

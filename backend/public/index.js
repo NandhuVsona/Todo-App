@@ -107,7 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".edit-box").classList.toggle("active");
     inputBox.value = textData;
     setTimeout(() => {
-      inputBox.focus();
+      inputBox.setSelectionRange(inputBox.value.length,inputBox.value.length)
+      inputBox.focus()
     }, 700);
   }
 

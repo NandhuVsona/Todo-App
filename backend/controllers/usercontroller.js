@@ -100,8 +100,14 @@ const login = async (req, res) => {
   if (!user) {
     return res
       .status(400)
-      .render("signin.ejs", { tostal:{msg: "Incorrect email or password",color:"red", title: "404 Not found",
-        bg: " rgba(255, 0, 0, 0.336)",} });
+      .render("signin.ejs", {
+        tostal: {
+          msg: "Incorrect email or password",
+          color: "red",
+          title: "404 Not found",
+          bg: " rgba(255, 0, 0, 0.336)",
+        },
+      });
   }
   const token = jwt.sign({ id: user._id }, process.env.SECRECT_KEY, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -114,10 +120,16 @@ const login = async (req, res) => {
   res.cookie("jwt", token, cookieOptions);
 
   if (!user || !(await user.correctPassword(password, user.password))) {
-    return res.status(401).json({
-      status: "failed",
-      message: "Incorrect eamil or password!",
-    });
+    return res
+      .status(400)
+      .render("signin.ejs", {
+        tostal: {
+          msg: "Your passowrd didn't match",
+          color: "red",
+          title: "Incorrect Password",
+          bg: " rgba(255, 0, 0, 0.336)",
+        },
+      });
   } else {
     const todos = await categorized(user._id);
 

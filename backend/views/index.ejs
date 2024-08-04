@@ -69,24 +69,33 @@
           <section class="bottom">
             <ul>
               <li class="theme-btn">
-                <p>Theme choice</p>
+                <div class="text">
+                  <p>Theme choice</p>
+                  <small>Click to toggle theme</small>
+                </div>
                 <div class="switch-theme"></div>
               </li>
               <li data-user-Id="<%=user._id%>" class="delete-btn">
-                <p>Delete my account</p>
+                <div class="text">
+                  <p>Delete my account</p>
+                  <small>Double click to delete</small>
+                </div>
                 <div class="switch-delete"></div>
               </li>
               <li class="logout-btn">
-                <p>Logout</p>
+                <div class="text">
+                  <p>Logout</p>
+                <small>Double click to logout</small>
+                </div>
                 <div class="switch-logout"></div>
               </li>
             </ul>
           </section>
           <footer>
-            <em
+            <small
               ><span class="copyright"></span> All &copy are reserved. app
               version 1.0.0
-            </em>
+            </small>
           </footer>
         </div>
         <div class="todo-container">

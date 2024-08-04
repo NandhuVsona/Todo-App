@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-label();
+  label();
   const addTodo = document.querySelector(".add");
   const saveBtn = document.querySelector(".save");
   const editBtn = document.querySelectorAll(".edit-task");
@@ -15,8 +15,7 @@ label();
   //Global variable
   let clickedTask = "";
 
-
-//hide label functionality ---------
+  //hide label functionality ---------
   function label() {
     let dayOne = document.querySelector(".day-1");
     let dayTwo = document.querySelector(".day-2");
@@ -47,26 +46,24 @@ label();
       !dayTwo.nextElementSibling.children.length > 0 &&
       !dayOne.nextElementSibling.children.length > 0 &&
       !past.nextElementSibling.children.length > 0 &&
-     ! dayThree.nextElementSibling.children.length > 0
+      !dayThree.nextElementSibling.children.length > 0
     ) {
-      document.querySelector('.empty').style.display = 'flex'
-    }else{
-      document.querySelector('.empty').style.display = 'none'
+      document.querySelector(".empty").style.display = "flex";
+    } else {
+      document.querySelector(".empty").style.display = "none";
     }
   }
-  
+
   function isStared(unstar) {
     let stared = "";
     if (unstar.classList.contains("fa-regular")) {
       stared = "fa-solid";
       unstar.classList.remove("fa-regular");
       unstar.classList.add("fa-solid");
-      console.log('if is executed')
     } else {
       stared = "fa-regular";
       unstar.classList.add("fa-regular");
       unstar.classList.remove("fa-solid");
-      console.log('else is executed')
     }
     let data =
       unstar.parentElement.previousElementSibling.children[1].textContent;
@@ -134,7 +131,6 @@ label();
     document.querySelector(".container").classList.remove("dark");
   }
 
-
   mode.addEventListener("click", () => {
     let theme = document.querySelector(".container").classList.toggle("dark");
     if (document.querySelector(".container").classList.contains("dark")) {
@@ -149,11 +145,30 @@ label();
   function reloadFunctionality() {
     const editBtn = document.querySelectorAll(".edit-task");
     const checkbox = document.querySelectorAll(".task section input");
-    const star = document.querySelectorAll(".fa-star");
+    const star = document.querySelectorAll("ul li .todo-operations .fa-star");
+    const star_2 = document.querySelectorAll(
+      ".day-2+ul li .todo-operations .fa-star"
+    );
+    const star_3 = document.querySelectorAll(
+      ".day-3+ul li .todo-operations .fa-star"
+    );
+    const star_4 = document.querySelectorAll(
+      ".day-4+ul li .todo-operations .fa-star"
+    );
+
     const deleteBtn = document.querySelectorAll(".delete");
-    star.forEach((unstar) => {
-      unstar.addEventListener("click", () => isStared(unstar));
-    });
+    star.forEach((unstar) =>
+      unstar.addEventListener("click", () => isStared(unstar))
+    );
+    star_2.forEach((item) =>
+      item.addEventListener("click", () => isStared(item))
+    );
+    star_3.forEach((item) =>
+      item.addEventListener("click", () => isStared(item))
+    );
+    star_4.forEach((item) =>
+      item.addEventListener("click", () => isStared(item))
+    );
 
     editBtn.forEach((task) => {
       task.addEventListener("click", () => editTask(task));
@@ -229,8 +244,8 @@ label();
 
   //Create Functionality---------------------------------------
   async function createPost(userId, data) {
-closeInputBox();
-let todo = {
+    closeInputBox();
+    let todo = {
       title: data,
       ref: userId,
     };
@@ -240,7 +255,7 @@ let todo = {
       body: JSON.stringify(todo),
     });
     let { savedTodo, status } = await req.json();
-    
+
     let dayOne = document.querySelector(".day-1");
     if (!dayOne.nextElementSibling.children.length > 0) {
       dayOne.parentElement.style.display = "block";
@@ -263,9 +278,8 @@ let todo = {
 
     document.querySelector(".day-1+ul").innerHTML += template;
     document.querySelector(".input-box input").value = "";
-    
-    reloadFunctionality();
 
+    reloadFunctionality();
 
     if (status === 201) {
       document.querySelector(".success-tostal").classList.add("active");
@@ -289,7 +303,7 @@ let todo = {
   //Delete Functionality--------------------------------------
   async function deleteTodo(todoId, userId) {
     let data = { userId };
-    
+
     let req = await fetch(`/api/v1/todo/${todoId}`, {
       method: "DELETE",
       headers: {
@@ -298,13 +312,15 @@ let todo = {
       body: JSON.stringify(data),
     });
     let res = await req.json();
-  
+
     label();
     taskDetails(document.querySelector(".hamburger").dataset.userId);
   }
 
   //Update Functionality---------------------------------------
   async function updateTodo(todoId, title, stared, completed) {
+    let hamburger = document.querySelector(".hamburger");
+    taskDetails(hamburger.dataset.userId);
     let updatedTodo = {
       todoId,
       title,
@@ -328,11 +344,11 @@ let logoutToggle = document.querySelector(".logout-btn");
 let deleteToggle = document.querySelector(".delete-btn");
 let themeToggle = document.querySelector(".theme-btn");
 
-deleteToggle.addEventListener("click", () => {
+deleteToggle.addEventListener("dblclick", () => {
   document.querySelector(".switch-delete").classList.toggle("active");
   deleteUser(deleteToggle.dataset.userId);
 });
-logoutToggle.addEventListener("click", () => {
+logoutToggle.addEventListener("dblclick", () => {
   document.querySelector(".switch-logout").classList.toggle("active");
   logout();
 });

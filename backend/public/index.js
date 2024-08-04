@@ -446,3 +446,19 @@ document.querySelector(".today-date").innerHTML = new Date()
   .slice(0, 4)
   .join(" ");
 document.querySelector(".copyright").innerHTML = new Date().getFullYear();
+
+let profile = document.querySelector('.profile img')
+
+gender(document.querySelector('.userName').textContent)
+console.log(document.querySelector('.userName').textContent)
+async function gender(name) {
+  let req = await fetch(`https://api.genderize.io?name=${name}`);
+  let {gender} = await req.json();
+  if(gender === 'female'){
+    profile.setAttribute('src','women.png')
+  }
+}
+
+
+
+

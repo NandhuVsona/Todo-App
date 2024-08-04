@@ -8,6 +8,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", "sanserif";
+  user-select:none;
+  resize: none;
 }
 ::-webkit-scrollbar {
   display: none;

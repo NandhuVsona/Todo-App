@@ -144,6 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function reloadFunctionality() {
     const editBtn = document.querySelectorAll(".edit-task");
+    const editBtn_2 = document.querySelectorAll(".day-2+ul li .todo-operations .edit-task");
+    const editBtn_3 = document.querySelectorAll(".day-3+ul li .todo-operations .edit-task");
+    const editBtn_4 = document.querySelectorAll(".day-4+ul li .todo-operations .edit-task");
     const checkbox = document.querySelectorAll(".task section input");
     const star = document.querySelectorAll("ul li .todo-operations .fa-star");
     const star_2 = document.querySelectorAll(
@@ -171,6 +174,15 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     editBtn.forEach((task) => {
+      task.addEventListener("click", () => editTask(task));
+    });
+    editBtn_2.forEach((task) => {
+      task.addEventListener("click", () => editTask(task));
+    });
+    editBtn_3.forEach((task) => {
+      task.addEventListener("click", () => editTask(task));
+    });
+    editBtn_4.forEach((task) => {
       task.addEventListener("click", () => editTask(task));
     });
 

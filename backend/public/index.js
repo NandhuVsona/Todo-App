@@ -346,20 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedTodo),
     });
-
-    document.querySelector(".success-tostal").classList.add("active");
-      let successWidth = 100;
-      const successIntervalId = setInterval(() => {
-        document.querySelector(".success-line").style.width =
-          successWidth - 1 + "%";
-        if (successWidth <= -10) {
-          document.querySelector(".success-tostal").classList.remove("active");
-          clearInterval(successIntervalId);
-          successWidth = 0;
-          document.querySelector(".success-line").style.width = "100%";
-        }
-        successWidth--;
-      }, 20);
   }
 });
 
